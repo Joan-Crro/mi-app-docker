@@ -1,15 +1,15 @@
 FROM node:20
 
-# Habilitar Corepack para Yarn
-RUN corepack enable && corepack prepare yarn@stable --activate
+# Instalar Yarn Classic (misma versión que se usa en local)
+RUN npm install -g yarn
 
 WORKDIR /usr/src/app
 
 # Copiar archivos de configuración
-COPY package.json yarn.lock .yarnrc.yml ./
+COPY package.json yarn.lock ./
 
 # Instalar dependencias con Yarn (esto creará node_modules)
-RUN yarn install --immutable
+RUN yarn install --frozen-lockfile
 
 # Copiar el resto del proyecto
 COPY . .
