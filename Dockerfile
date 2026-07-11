@@ -1,8 +1,5 @@
 FROM node:20
 
-# Instalar Yarn Classic (misma versión que se usa en local)
-RUN npm install -g yarn
-
 WORKDIR /usr/src/app
 
 # Copiar archivos de configuración
